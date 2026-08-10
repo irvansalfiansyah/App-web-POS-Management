@@ -91,7 +91,7 @@ const SettingsPage = () => {
                   <span className="w-3 h-3 rounded-full bg-green-500 inline-block animate-ping"></span>
                   Online
                 </p>
-                <p className="text-label-md text-muted-foreground mt-1">Node/Express Port 5050</p>
+                <p className="text-label-md text-muted-foreground mt-1">Node/Express Port 5000</p>
               </div>
               <div className="bg-secondary p-4 rounded-xl text-center border border-border">
                 <p className="text-label-md text-muted-foreground font-bold">DATABASE</p>
