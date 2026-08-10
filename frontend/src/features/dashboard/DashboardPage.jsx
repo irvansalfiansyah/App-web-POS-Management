@@ -116,7 +116,7 @@ const DashboardPage = () => {
     : '';
 
   return (
-    <div className="bg-surface dark:bg-on-background font-body-lg text-on-surface dark:text-white min-h-screen flex w-full transition-colors duration-200">
+    <div className="bg-background font-sans text-foreground min-h-screen flex w-full transition-all duration-200">
       
       {/* Sidebar Navigation */}
       <Sidebar />
@@ -124,16 +124,16 @@ const DashboardPage = () => {
       {/* Main Dashboard Space */}
       <main className="ml-[260px] flex-1 p-8 overflow-y-auto">
         <header className="mb-8">
-          <h1 className="text-headline-md font-bold text-primary dark:text-primary-fixed mb-1">
+          <h1 className="text-headline-md font-bold text-primary mb-1">
             Business Dashboard
           </h1>
-          <p className="text-body-md text-on-surface-variant dark:text-surface-variant">
+          <p className="text-body-md text-muted-foreground">
             Real-time shop performance metrics, sales graphs, and inventory status warnings
           </p>
         </header>
 
         {isLoading ? (
-          <div className="flex flex-col items-center justify-center py-40 text-on-surface-variant dark:text-surface-variant">
+          <div className="flex flex-col items-center justify-center py-40 text-muted-foreground">
             <span className="material-symbols-outlined text-4xl animate-spin">progress_activity</span>
             <p className="text-body-md mt-2">Loading data widgets...</p>
           </div>
@@ -144,55 +144,55 @@ const DashboardPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               
               {/* Card 1: Revenue */}
-              <div className="bg-surface-container-lowest dark:bg-inverse-surface border border-outline-variant dark:border-outline rounded-2xl p-5 shadow-sm flex items-center gap-4">
+              <div className="bg-card border border-border rounded-2xl p-5 shadow-sm flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-200 flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-2xl">payments</span>
                 </div>
                 <div>
-                  <p className="text-label-md text-on-surface-variant dark:text-surface-variant font-bold">TOTAL REVENUE</p>
-                  <p className="text-headline-sm font-extrabold text-on-surface dark:text-white mt-1">
+                  <p className="text-label-md text-muted-foreground font-bold">TOTAL REVENUE</p>
+                  <p className="text-headline-sm font-extrabold text-foreground mt-1">
                     {formatPrice(totalRevenue)}
                   </p>
                 </div>
               </div>
 
               {/* Card 2: Transactions */}
-              <div className="bg-surface-container-lowest dark:bg-inverse-surface border border-outline-variant dark:border-outline rounded-2xl p-5 shadow-sm flex items-center gap-4">
+              <div className="bg-card border border-border rounded-2xl p-5 shadow-sm flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-2xl">receipt_long</span>
                 </div>
                 <div>
-                  <p className="text-label-md text-on-surface-variant dark:text-surface-variant font-bold">TRANSACTIONS</p>
-                  <p className="text-headline-sm font-extrabold text-on-surface dark:text-white mt-1">
+                  <p className="text-label-md text-muted-foreground font-bold">TRANSACTIONS</p>
+                  <p className="text-headline-sm font-extrabold text-foreground mt-1">
                     {totalTransactions} invoices
                   </p>
                 </div>
               </div>
 
               {/* Card 3: Avg Order */}
-              <div className="bg-surface-container-lowest dark:bg-inverse-surface border border-outline-variant dark:border-outline rounded-2xl p-5 shadow-sm flex items-center gap-4">
+              <div className="bg-card border border-border rounded-2xl p-5 shadow-sm flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-2xl">shopping_bag</span>
                 </div>
                 <div>
-                  <p className="text-label-md text-on-surface-variant dark:text-surface-variant font-bold">AVG BASKET</p>
-                  <p className="text-headline-sm font-extrabold text-on-surface dark:text-white mt-1">
+                  <p className="text-label-md text-muted-foreground font-bold">AVG BASKET</p>
+                  <p className="text-headline-sm font-extrabold text-foreground mt-1">
                     {formatPrice(avgOrderValue)}
                   </p>
                 </div>
               </div>
 
               {/* Card 4: Low Stock Alert */}
-              <div className="bg-surface-container-lowest dark:bg-inverse-surface border border-outline-variant dark:border-outline rounded-2xl p-5 shadow-sm flex items-center gap-4">
+              <div className="bg-card border border-border rounded-2xl p-5 shadow-sm flex items-center gap-4">
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
                   lowStockCount > 0 
                     ? 'bg-error-container text-on-error-container animate-pulse'
-                    : 'bg-surface-container-high dark:bg-zinc-800 text-outline dark:text-zinc-400'
+                    : 'bg-secondary text-muted-foreground'
                 }`}>
                   <span className="material-symbols-outlined text-2xl">warning</span>
                 </div>
                 <div>
-                  <p className="text-label-md text-on-surface-variant dark:text-surface-variant font-bold">LOW STOCK ITEMS</p>
+                  <p className="text-label-md text-muted-foreground font-bold">LOW STOCK ITEMS</p>
                   <p className="text-headline-sm font-extrabold mt-1">
                     {lowStockCount} items
                   </p>
@@ -205,23 +205,23 @@ const DashboardPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
               {/* Sales Graph Chart */}
-              <div className="bg-surface-container-lowest dark:bg-inverse-surface border border-outline-variant dark:border-outline rounded-2xl p-6 shadow-sm lg:col-span-2 flex flex-col justify-between">
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm lg:col-span-2 flex flex-col justify-between">
                 <div>
                   <h2 className="text-title-lg font-bold mb-1 flex items-center gap-2">
                     <span className="material-symbols-outlined text-primary">show_chart</span>
                     Revenue Trend (Last 7 Days)
                   </h2>
-                  <p className="text-body-md text-on-surface-variant dark:text-surface-variant mb-6">
+                  <p className="text-body-md text-muted-foreground mb-6">
                     Sales revenue aggregated daily from checkouts
                   </p>
                 </div>
 
                 {/* SVG Line/Area graph rendering */}
-                <div className="w-full h-44 bg-surface dark:bg-on-background rounded-xl p-2 flex items-center justify-center border border-outline-variant dark:border-outline relative overflow-hidden">
+                <div className="w-full h-44 bg-secondary rounded-xl p-2 flex items-center justify-center border border-border relative overflow-hidden">
                   <svg className="w-full h-full" viewBox={`0 0 ${chartWidth} ${chartHeight}`}>
                     {/* Grid lines */}
-                    <line x1={paddingX} y1={paddingY} x2={chartWidth - paddingX} y2={paddingY} stroke="#e2e8f0" strokeDasharray="3,3" />
-                    <line x1={paddingX} y1={chartHeight - paddingY} x2={chartWidth - paddingX} y2={chartHeight - paddingY} stroke="#cbd5e1" strokeWidth="1.5" />
+                    <line x1={paddingX} y1={paddingY} x2={chartWidth - paddingX} y2={paddingY} stroke="currentColor" className="text-border" strokeDasharray="3,3" />
+                    <line x1={paddingX} y1={chartHeight - paddingY} x2={chartWidth - paddingX} y2={chartHeight - paddingY} stroke="currentColor" className="text-muted-foreground/30" strokeWidth="1.5" />
 
                     {/* Gradient Area under line */}
                     {fillPathD && (
@@ -230,14 +230,14 @@ const DashboardPage = () => {
 
                     {/* Path line */}
                     {pathD && (
-                      <path d={pathD} fill="none" stroke="var(--md-sys-color-primary, #006948)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d={pathD} fill="none" stroke="var(--primary)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                     )}
 
                     {/* Interactive dots and text */}
                     {points.map((p, i) => (
                       <g key={i}>
-                        <circle cx={p.x} cy={p.y} r="5" fill="#ffffff" stroke="var(--md-sys-color-primary, #006948)" strokeWidth="2" />
-                        <text x={p.x} y={p.y - 10} textAnchor="middle" fontSize="9" fontWeight="bold" fill="var(--md-sys-color-primary, #006948)">
+                        <circle cx={p.x} cy={p.y} r="5" fill="#ffffff" stroke="var(--primary)" strokeWidth="2" />
+                        <text x={p.x} y={p.y - 10} textAnchor="middle" fontSize="9" fontWeight="bold" fill="var(--primary)">
                           {p.value > 0 ? `$${p.value.toFixed(0)}` : ''}
                         </text>
                       </g>
@@ -247,7 +247,7 @@ const DashboardPage = () => {
                     {chartEntries.map(([label, _], i) => {
                       const x = paddingX + (i * (chartWidth - paddingX * 2)) / (chartEntries.length - 1);
                       return (
-                        <text key={i} x={x} y={chartHeight - 4} textAnchor="middle" fontSize="9" fontWeight="500" fill="#94a3b8">
+                        <text key={i} x={x} y={chartHeight - 4} textAnchor="middle" fontSize="9" fontWeight="500" fill="currentColor" className="text-muted-foreground">
                           {label}
                         </text>
                       );
@@ -255,8 +255,8 @@ const DashboardPage = () => {
 
                     <defs>
                       <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="var(--md-sys-color-primary, #006948)" stopOpacity="1" />
-                        <stop offset="100%" stopColor="var(--md-sys-color-primary, #006948)" stopOpacity="0" />
+                        <stop offset="0%" stopColor="var(--primary)" stopOpacity="1" />
+                        <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -264,12 +264,12 @@ const DashboardPage = () => {
               </div>
 
               {/* Low Stock Alerts Widget */}
-              <div className="bg-surface-container-lowest dark:bg-inverse-surface border border-outline-variant dark:border-outline rounded-2xl p-6 shadow-sm flex flex-col">
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm flex flex-col">
                 <h2 className="text-title-lg font-bold mb-1 flex items-center gap-2">
                   <span className="material-symbols-outlined text-error">warning</span>
                   Low Stock Warnings
                 </h2>
-                <p className="text-body-md text-on-surface-variant dark:text-surface-variant mb-4">
+                <p className="text-body-md text-muted-foreground mb-4">
                   Adjust these stock levels in Inventory page immediately
                 </p>
 
@@ -283,13 +283,13 @@ const DashboardPage = () => {
                     lowStockAlerts.map(alert => (
                       <div 
                         key={alert.id}
-                        className="flex items-center justify-between p-3 rounded-xl bg-error-container text-on-error-container border border-red-200 dark:border-red-950 text-body-md"
+                        className="flex items-center justify-between p-3 rounded-xl bg-destructive/10 text-destructive border border-destructive/20 text-body-md"
                       >
                         <div>
                           <p className="font-bold">{alert.name}</p>
                           <p className="text-[10px] opacity-75 font-mono">SKU: {alert.sku}</p>
                         </div>
-                        <span className="px-2.5 py-1 rounded bg-white text-error font-extrabold text-label-md">
+                        <span className="px-2.5 py-1 rounded bg-card text-destructive border border-destructive/20 font-extrabold text-label-md">
                           {alert.stock_quantity} left
                         </span>
                       </div>
@@ -301,22 +301,22 @@ const DashboardPage = () => {
             </div>
 
             {/* Bottom Section: Recent transactions list */}
-            <div className="bg-surface-container-lowest dark:bg-inverse-surface border border-outline-variant dark:border-outline rounded-2xl p-6 shadow-sm">
+            <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
               <h2 className="text-title-lg font-bold mb-1 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary">history</span>
                 Recent Transactions
               </h2>
-              <p className="text-body-md text-on-surface-variant dark:text-surface-variant mb-6">
+              <p className="text-body-md text-muted-foreground mb-6">
                 Latest sales order tickets issued from the cashier terminal
               </p>
 
               {salesOrders.length === 0 ? (
-                <p className="text-body-md text-outline italic text-center py-6">No transaction history records in database.</p>
+                <p className="text-body-md text-muted-foreground italic text-center py-6">No transaction history records in database.</p>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-left text-body-md">
                     <thead>
-                      <tr className="border-b border-outline-variant dark:border-outline text-label-md font-bold text-on-surface-variant dark:text-surface-variant uppercase tracking-wider pb-2">
+                      <tr className="border-b border-border text-label-md font-bold text-muted-foreground uppercase tracking-wider pb-2">
                         <th className="py-2">Invoice #</th>
                         <th className="py-2">Date & Time</th>
                         <th className="py-2 text-center">Payment</th>
@@ -325,29 +325,29 @@ const DashboardPage = () => {
                         <th className="py-2 text-center">Status</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-outline-variant dark:divide-outline">
+                    <tbody className="divide-y divide-border">
                       {salesOrders.slice(0, 5).map(order => (
-                        <tr key={order.id} className="hover:bg-surface-container-low dark:hover:bg-zinc-800 transition-colors">
-                          <td className="py-3 font-mono font-bold text-primary dark:text-primary-fixed">{order.order_number}</td>
-                          <td className="py-3 text-on-surface-variant dark:text-surface-variant">
+                        <tr key={order.id} className="hover:bg-secondary/40 transition-colors">
+                          <td className="py-3 font-mono font-bold text-primary">{order.order_number}</td>
+                          <td className="py-3 text-muted-foreground">
                             {new Date(order.created_at).toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'short' })}
                           </td>
                           <td className="py-3 text-center">
-                            <span className="px-2.5 py-0.5 rounded text-label-md font-bold bg-secondary-container text-on-secondary-container uppercase">
+                            <span className="px-2.5 py-0.5 rounded text-label-md font-bold bg-secondary text-muted-foreground border border-border uppercase">
                               {order.payment_method}
                             </span>
                           </td>
-                          <td className="py-3 text-right text-on-surface-variant dark:text-surface-variant font-medium">
+                          <td className="py-3 text-right text-muted-foreground font-medium">
                             {formatPrice(parseFloat(order.tax_total))}
                           </td>
-                          <td className="py-3 text-right font-extrabold text-on-surface dark:text-white">
+                          <td className="py-3 text-right font-extrabold text-foreground">
                             {formatPrice(parseFloat(order.grand_total))}
                           </td>
                           <td className="py-3 text-center">
-                            <span className={`px-2 py-0.5 rounded text-label-md font-bold uppercase inline-block ${
+                            <span className={`px-2 py-0.5 rounded text-label-md font-bold uppercase inline-block border ${
                               order.status === 'refunded'
-                                ? 'bg-error-container text-on-error-container'
-                                : 'bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-200'
+                                ? 'bg-destructive/10 text-destructive border-destructive/20'
+                                : 'bg-success/10 text-success border-success/20'
                             }`}>
                               {order.status}
                             </span>

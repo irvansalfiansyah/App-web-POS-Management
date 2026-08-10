@@ -76,7 +76,7 @@ const ProductGrid = ({ products, onAddToCart, selectedCategory, setSelectedCateg
       </div>
 
       {/* Grid Container */}
-      <div className="flex-1 overflow-y-auto pr-2 pb-6">
+      <div className="flex-1 overflow-y-auto pt-4 pr-2 pb-6">
         {filteredProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-64 text-muted-foreground">
             <span className="material-symbols-outlined text-5xl mb-2" data-icon="search_off">search_off</span>

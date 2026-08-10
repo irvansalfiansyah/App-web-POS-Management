@@ -339,7 +339,7 @@ const TransactionsPage = () => {
   });
 
   return (
-    <div className="bg-surface dark:bg-on-background font-body-lg text-on-surface dark:text-white min-h-screen flex w-full transition-colors duration-200">
+    <div className="bg-background font-sans text-foreground min-h-screen flex w-full transition-all duration-200">
       
       {/* Sidebar Navigation */}
       <Sidebar />
@@ -348,10 +348,10 @@ const TransactionsPage = () => {
       <main className="ml-[260px] flex-1 p-8 overflow-y-auto">
         <header className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-headline-md font-bold text-primary dark:text-primary-fixed mb-1">
+            <h1 className="text-headline-md font-bold text-primary mb-1">
               Transaction History
             </h1>
-            <p className="text-body-md text-on-surface-variant dark:text-surface-variant">
+            <p className="text-body-md text-muted-foreground">
               Browse sales invoices, inspect items purchased, and handle customer refunds
             </p>
           </div>
@@ -492,7 +492,7 @@ const TransactionsPage = () => {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left font-sans">
                 <thead>
-                  <tr className="bg-secondary/50 border-b border-border text-label-md font-bold text-muted-foreground uppercase tracking-wider">
+                  <tr className="bg-secondary border-b border-border text-label-md font-bold text-muted-foreground uppercase tracking-wider">
                     <th className="px-6 py-4">Invoice #</th>
                     <th className="px-6 py-4">Date & Time</th>
                     <th className="px-6 py-4 text-center">Payment Method</th>
@@ -528,10 +528,10 @@ const TransactionsPage = () => {
                           {formatPrice(parseFloat(order.grand_total))}
                         </td>
                         <td className="px-6 py-4 text-center">
-                          <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide inline-block ${
+                          <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide inline-block border ${
                             isRefunded
-                              ? 'bg-destructive/15 text-destructive'
-                              : 'bg-success/15 text-success'
+                              ? 'bg-destructive/10 text-destructive border-destructive/20'
+                              : 'bg-success/10 text-success border-success/20'
                           }`}>
                             {order.status}
                           </span>
